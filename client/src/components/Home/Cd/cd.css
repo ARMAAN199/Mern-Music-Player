@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:400,700);
+* {
+  box-sizing: border-box;
+}
+.animatebtn {
+  color: white;
+  /* margin-top: 50%; */
+  z-index: 30;
+  position: relative;
+}
+.player1 {
+  position: absolute;
+  width: 30%;
+}
+.player1:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.record {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 70%;
+  height: 70%;
+  background-color: #363636;
+  /* background: linear-gradient(to right, #459fee 10%, #56CDD3 41%, #56CDD3 61%, #459fee 100%); */
+  background: linear-gradient(
+    to right,
+    #f15154 10%,
+    #fbcb27 41%,
+    #fbcb27 61%,
+    #eb595c 100%
+  );
+  border-radius: 100%;
+  box-shadow: inset #030303 0 0 0 1px, inset rgba(255, 255, 255, 0.3) 0 0 0 2px;
+  transform: rotate(0) translateZ(0);
+  background: linear-gradient(
+    to right,
+    #191919 10%,
+    #323232 41%,
+    #191919 61%,
+    #323232 100%
+  );
+}
+.record::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 100%;
+}
