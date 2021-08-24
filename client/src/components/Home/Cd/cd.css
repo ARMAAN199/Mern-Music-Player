@@ -100,3 +100,36 @@
   transform: scale(0.2);
   z-index: 3;
 }
+
+.animate {
+  animation: rotation 2s infinite linear;
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+.image {
+  position: relative;
+  margin-top: -25%;
+  margin-left: 14%;
+  width: 100%;
+  transform-origin: 50% -30px -100px;
+  transform-style: preserve-3D;
+  transition: transform-origin 0.2s ease-in-out, transform 1.2s ease-in-out;
+}
