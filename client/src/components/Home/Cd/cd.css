@@ -179,3 +179,44 @@
     width: 120%;
   }
 }
+@media only screen and (max-width: 860px) {
+  .image {
+    margin-left: 20%;
+  }
+  .player1 {
+    width: 47%;
+    margin-left: -8%;
+  }
+  .image {
+    margin-top: -30%;
+    margin-left: 10%;
+    width: 140%;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .image {
+    margin-left: auto;
+  }
+  .player1 {
+    width: 53%;
+    margin-left: 8%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -32%;
+    margin-left: 27%;
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .player1 {
+    width: 62%;
+    margin-left: 5%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -30%;
+    margin-left: 32%;
+    width: 85%;
+  }
+}
