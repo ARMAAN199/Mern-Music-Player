@@ -57,3 +57,46 @@
   margin: auto;
   border-radius: 100%;
 }
+.record:after {
+  width: 48%;
+  height: 48%;
+  /* background-color:rgba(255, 255, 255, 0.4); */
+  background: tomato;
+
+  box-shadow: inset rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(0, 0, 0, 0.1) 0 0 2px 3px;
+  transform: rotate(5deg);
+}
+
+.record .label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 36%;
+  height: 36%;
+  padding: 4.5% 6%;
+  background-color: transparent;
+  /* background: repeating-linear-gradient(-45deg, #56cdd3, #56cdd3 1px, #56cdd3 1px, #a3ecec 3px); */
+  text-align: center;
+  border-radius: 100%;
+  z-index: 2;
+}
+
+.spindle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 30%;
+  height: 30%;
+  background-color: wheat;
+  border: 10px solid #000000;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 12px 2px;
+  transform: scale(0.2);
+  z-index: 3;
+}
