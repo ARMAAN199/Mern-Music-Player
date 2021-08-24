@@ -133,3 +133,49 @@
   transform-style: preserve-3D;
   transition: transform-origin 0.2s ease-in-out, transform 1.2s ease-in-out;
 }
+.needle {
+  z-index: 20;
+  transform: rotate(30deg);
+}
+@media only screen and (max-width: 1200px) {
+  .image {
+    margin-left: 23%;
+  }
+  .player1 {
+    width: 35%;
+    margin-left: -5%;
+  }
+  .image {
+    margin-top: -25%;
+    margin-left: 14%;
+    width: 115%;
+  }
+}
+@media only screen and (max-width: 990px) {
+  .image {
+    margin-left: 14%;
+  }
+  .player1 {
+    width: 39%;
+    margin-left: -8%;
+  }
+  .image {
+    margin-top: -25%;
+    margin-left: 10%;
+    width: 130%;
+  }
+}
+@media only screen and (max-width: 930px) {
+  .image {
+    margin-left: 14%;
+  }
+  .player1 {
+    width: 39%;
+    margin-left: -8%;
+  }
+  .image {
+    margin-top: -30%;
+    margin-left: 5%;
+    width: 120%;
+  }
+}
