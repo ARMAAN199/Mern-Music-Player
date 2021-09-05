@@ -220,3 +220,39 @@
     width: 85%;
   }
 }
+@media only screen and (max-width: 500px) {
+  .player1 {
+    width: 62%;
+    margin-left: 5%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -30%;
+    margin-left: 35%;
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .player1 {
+    width: 62%;
+    margin-left: 12%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -32%;
+    margin-left: 32%;
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .player1 {
+    width: 70%;
+    margin-left: 6%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -32%;
+    margin-left: 33%;
+    width: 97%;
+  }
+}
