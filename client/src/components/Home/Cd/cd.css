@@ -256,3 +256,48 @@
     width: 97%;
   }
 }
+@media only screen and (max-width: 350px) {
+  .player1 {
+    width: 70%;
+    margin-left: 6%;
+    margin-top: -10%;
+  }
+  .image {
+    margin-top: -32%;
+    margin-left: 33%;
+    width: 100%;
+  }
+  .needle {
+    transform: rotate(25deg);
+  }
+}
+@media only screen and (max-width: 320px) {
+  .player1 {
+    width: 80%;
+    margin-left: -0%;
+    margin-top: -21%;
+  }
+  .image {
+    margin-top: -52%;
+    margin-left: 23%;
+    width: 110%;
+  }
+  .needle {
+    transform: rotate(22deg);
+  }
+}
+@media only screen and (max-width: 300px) {
+  .player1 {
+    width: 75%;
+    margin-left: -0%;
+    margin-top: -21%;
+  }
+  .image {
+    margin-top: -59%;
+    margin-left: 17%;
+    width: 115%;
+  }
+  .needle {
+    transform: rotate(22deg);
+  }
+}
