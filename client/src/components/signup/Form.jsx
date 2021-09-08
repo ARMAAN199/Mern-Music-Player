@@ -22,6 +22,78 @@ function Form() {
   const [showserverERR, setShowserverERR] = useState(false);
   const [usernameError, setusernameError] = useState("NO");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(
+      userName +
+        " " +
+        passObj.userPassword +
+        " " +
+        passObj.userPassword2 +
+        " " +
+        userEmail
+    );
+    //  var headers = {
+    //     'Content-Type': 'application/json;charset=UTF-8',
+    //     'Access-Control-Allow-Origin': '*'
+    // };
+
+    axios
+      .post("/register", {
+        username: userName,
+        pass: passObj.userPassword,
+        email: userEmail,
+      })
+      .then(function (response) {
+        if (response.data.code)
+          //window.location.reload()
+          setShowserverERR(response.data.code);
+        setusernameError("NO");
+        setEmailError("NO");
+        setpassm("NO");
+        setButtondisabled(true);
+        setshowmess();
+        setshowmess1();
+        setUserName("");
+        setUserEmail("");
+        setUserPassword({ ...passObj, userPassword: "", userPassword2: "" });
+      })
+      .catch(function (error) {
+        console.log("error");
+      });
+  };
+
+  const handlegoogleSubmit = (e) => {
+    e.preventDefault();
+    //  axios.get('/auth/google').then(function(response){console.log(response)}).catch(function(err){console.log(err)})
+    window.open("http://localhost:3763/auth/google", "_self");
+  };
+
+  useEffect(() => {
+    function checkmatch() {
+      passObj.userPassword === passObj.userPassword2
+        ? setpassm("YES")
+        : setpassm("NO");
+    }
+    checkmatch();
+  }, [passObj.userPassword, passObj.userPassword2]);
+
+  useEffect(() => {
+    function checkmail() {
+      validator.isEmail(userEmail) ? setEmailError("NO") : setEmailError("YES");
+    }
+    checkmail();
+  }, [userEmail]);
+
+  useEffect(() => {
+    function checkusername() {
+      validator.isEmail(userName)
+        ? setusernameError("YES")
+        : setusernameError("NO");
+    }
+    checkusername();
+  }, [userName]);
+
   useEffect(() => {
     if (
       EmailError === "NO" &&
