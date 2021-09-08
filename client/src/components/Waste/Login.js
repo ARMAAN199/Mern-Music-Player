@@ -53,48 +53,7 @@ function Login() {
       <div className="row" style={{height:"30%"}}>
         <h1>Login</h1>
         </div>  
-      <div className="row">
-        <div className="col-sm-3"></div>
-        <div className="col-sm-4"></div>
-        <div className="col-sm-4">
-          <form autoComplete="off">
-            <div className="form-group">
-              <label htmlFor="inlineFormInputGroup">Username</label>
-              <div className="input-group mb-2">
-                <div className="input-group-prepend">
-                  <div className="input-group-text">@</div>
-                </div>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inlineFormInputGroup"
-                  placeholder="Username"
-                  value={userName} 
-                  onChange = {(e)=> setUserName(e.target.value)}
-                />
-              </div>
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                value={passObj.userPassword}
-                onChange = {(e)=> {setUserPassword({...passObj, userPassword: e.target.value});}}
-              />
-            </div>
-          
-            <button disabled={buttondisabled} type="submit" className="btn btn-primary" onClick={handleSubmit}>
-              Submit
-            </button>
-            &nbsp; &nbsp;
-            <button className="btn btn-secondary" onClick={handlegoogleSubmit}>
-              Google
-            </button>
-
-          </form>
 
           <a href="/" style={{}}>Not Registered Yet? Register Now.</a>
         </div>
