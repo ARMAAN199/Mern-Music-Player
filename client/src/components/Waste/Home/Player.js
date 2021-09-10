@@ -36,6 +36,33 @@ function Player({ collection, current_song, setCurrent_song }) {
     setvolume(e.target.value);
   };
 
+  const play = () => {
+    const audio = audioRef.current;
+
+    if (!isPlaying) {
+      setIsPlaying(true);
+      audio.play();
+    }
+
+    if (isPlaying) {
+      setIsPlaying(false);
+      audio.pause();
+    }
+  };
+
+  useEffect(() => {
+    setSong(collection[current_song]);
+  }, [current_song]);
+
+  const prevsong = () => {
+    const audio = audioRef.current;
+    if (current_song - 1 === -1) setCurrent_song(collection.length - 1);
+    else setCurrent_song(current_song - 1);
+    setTimeout(() => {
+      audio.play();
+    }, 1000);
+  };
+
   const nextsong = () => {
     const audio = audioRef.current;
     if (current_song + 1 === collection.length) setCurrent_song(0);
