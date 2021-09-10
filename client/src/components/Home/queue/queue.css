@@ -47,3 +47,51 @@
 .active {
   border-left: solid 5px #ff4e50;
 }
+@media only screen and (max-width: 929px) {
+  .heading {
+    font-size: 3rem !important;
+  }
+  .queuelist {
+    padding-bottom: 20%;
+  }
+}
+@media only screen and (max-width: 840px) {
+  .queuelist {
+    padding-top: 1%;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .heading,
+  .heading2 {
+    font-size: 3rem !important;
+  }
+  .queuelist {
+    padding-top: 10%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .heading,
+  .heading2 {
+    padding-top: 4%;
+    font-size: 2.2rem !important;
+  }
+  .queuelist {
+    padding-top: 16%;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .heading,
+  .heading2 {
+    font-size: 1.8rem !important;
+    padding-top: 2%;
+    height: 7%;
+  }
+  .queuelist {
+    padding-top: 16%;
+  }
+}
+@media only screen and (max-width: 250px) {
+  .queuelist {
+    padding-top: 20%;
+  }
+}
