@@ -37,6 +37,32 @@ function Player({
     nextsong();
   }, [collection]);
 
+  const onChange = (e) => {
+    const audio = audioRef.current;
+    audio.currentTime = (audio.duration / 100) * e.target.value;
+    setPercentage(e.target.value);
+  };
+
+  const onChangevol = (e) => {
+    const audio = audioRef.current;
+    audio.volume = e.target.value;
+    setvolume(e.target.value);
+  };
+
+  const play = () => {
+    const audio = audioRef.current;
+    setCurrent_song(current_song);
+    if (!isPlaying) {
+      setIsPlaying(true);
+      audio.play();
+    }
+
+    if (isPlaying) {
+      setIsPlaying(false);
+      audio.pause();
+    }
+  };
+
   return (
     <div className="container-fluid player p-0">
       <div className="row">
