@@ -63,6 +63,85 @@ function Player({
     }
   };
 
+  // useEffect(() => {
+  //   console.log(chn)
+  //   setSong(collectionlocal[1])
+  //   if(chn===1)
+  //   intermediate()
+  // }, [chn])
+
+  useEffect(() => {
+    prevsong();
+    nextsong();
+    const audio = audioRef.current;
+    setTimeout(() => {
+      audio.pause();
+    }, 1000);
+    setIsPlaying(false);
+  }, []);
+
+  // const intermediate = () => {
+  //   setCurrent_song(1)
+  //   prevsong()
+  //   setchn(false)
+  // }
+
+  useEffect(() => {
+    setSong(collectionlocal[current_song]);
+    console.log("SONG CHANGED", current_song);
+  }, [current_song]);
+
+  const prevsong = () => {
+    console.log("CALLing prev", current_song);
+    const audio = audioRef.current;
+    if (current_song - 1 === -1) setCurrent_song(collectionlocal.length - 1);
+    else setCurrent_song(current_song - 1);
+    setTimeout(() => {
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            console.log("playing audio");
+          })
+          .catch((error) => {
+            console.log("REQUEST Interrupted. AJ");
+          });
+      }
+    }, 500);
+    setIsPlaying(true);
+    console.log("PREV CALLED", current_song);
+  };
+
+  const nextsong = () => {
+    const audio = audioRef.current;
+    if (current_song + 1 === collectionlocal.length) setCurrent_song(0);
+    else setCurrent_song(current_song + 1);
+    setTimeout(() => {
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            console.log("playing audio");
+          })
+          .catch((error) => {
+            console.log("REQUEST Interrupted. AJ");
+          });
+      }
+    }, 500);
+    setIsPlaying(true);
+  };
+
+  const getCurrDuration = (e) => {
+    const percent = (
+      (e.currentTarget.currentTime / e.currentTarget.duration) *
+      100
+    ).toFixed(2);
+    const time = e.currentTarget.currentTime;
+
+    setPercentage(+percent);
+    setCurrentTime(time.toFixed(2));
+  };
+
   return (
     <div className="container-fluid player p-0">
       <div className="row">
