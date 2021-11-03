@@ -17,6 +17,38 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
+  new googleStrategy(
+    {
+      //something passport
+      callbackURL: "http://localhost:3763/auth/google/redirect",
+      clientID: keys.google.clientID,
+      clientSecret: keys.google.clientSecret,
+    },
+    function (token, tokenSecret, profile, done) {
+      console.log(profile);
+      User.findOne({ username: profile.id }).then((currentUser) => {
+        if (currentUser) {
+          console.log("User Already In DB", currentUser);
+          done(null, currentUser);
+        } else {
+          new User({
+            username: profile.id,
+            email: profile._json.email,
+            googleaccount: { isgoogle: 1, googlename: profile._json.name },
+            img: profile._json.picture,
+          })
+            .save()
+            .then((newUser) => {
+              console.log("NEW USER CREATED", newUser);
+              done(null, newUser);
+            });
+        }
+      });
+    }
+  )
+);
+
+passport.use(
   new LocalStrategy(function (username, password, done) {
     console.log("INSDE LOCAL Curr");
     User.findOne({ username: username }, function (err, user) {
