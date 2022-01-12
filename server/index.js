@@ -33,3 +33,25 @@ app.use(
   })
 );
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(mainroutes);
+app.use(profileroutes);
+
+// ${process.env.START_MONGODB}${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}${process.env.END_MONGODB}
+try {
+  mongoose.connect(
+    `mongodb+srv://armaan:key2948@cluster0.giwib.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => {
+      console.log(`Connected to the DATABASE`);
+    }
+  );
+} catch (error) {
+  console.log(`Could not connect to the DB because ${error}`);
+}
+
+app.listen(port, () => {
+  console.log(`App Running on port ${port}.`);
+});
