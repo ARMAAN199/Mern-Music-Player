@@ -59,3 +59,42 @@ router.get(
     res.redirect("http://localhost:3000/home");
   }
 );
+
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    console.log("BACK IN /login route user ", user);
+    if (err) throw err;
+    if (!user) {
+      res.send(info);
+    } else {
+      let otp = random.int((min = 123456), (max = 987654)) + "";
+      otpmail(user.email, user.username, otp);
+      // req.logIn(user, err=>{
+      //           if (err) throw err;
+      //           console.log(user) })
+      //  res.send({email: user.email, code: 3, otp:otp})
+    }
+  })(req, res, next);
+});
+
+// function validateotp(req, user){
+//   console.log('INSIDE VALIDATE OTP NOW. USER IS', user, " REQ>USER is ", req)
+//    router.post('/verifyotp' ,(req,res) =>{
+//     console.log('INSIDE Verify OTP NOW. USER IS', user, " REQ>USER is ", req)
+//      var otp = req.flash("otp")[0]
+//      console.log(otp)
+//     console.log("Verify OTP", otp, req.body.otp)
+//     if(req.body.otp === otp){
+//       console.log("Verify OTP99")
+//           req.logIn(user, err=>{
+//             console.log("Verify OT999")
+//         if (err) throw err;
+//         console.log(user) })
+//         res.send({code:2})
+//     }
+//     else{
+//       console.log("Verify OTP5555")
+//       res.send({code:1})
+//     }
+//   })
+// }
