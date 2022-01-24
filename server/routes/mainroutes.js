@@ -98,3 +98,29 @@ router.post("/login", (req, res, next) => {
 //     }
 //   })
 // }
+
+router.get("/getuser", (req, res) => {
+  console.log("hello3");
+  res.send(req.user);
+});
+
+router.delete("/logout", function (req, res) {
+  if (req.isAuthenticated()) {
+    req.session.destroy(function () {
+      res.send("LOGGED OUT");
+    });
+  }
+});
+
+module.exports = router;
+
+// res.redirect('http://localhost:3000/login');
+
+// const now = new Date();
+// formdate =date.format(now, 'YYYY/MM/DD');
+
+//router.get('/', function (req, res) {res.send("<h1>HELLO</h1>")})
+// router.get('/auth/google', function(req,res){
+//   console.log("YO")
+//   res.send("YO")
+// })
