@@ -45,3 +45,144 @@ router.get("/getplaylists", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+router.get("/gethinartists", (req, res) => {
+  Hinartist.find()
+    .then((artists) => {
+      res.send(artists);
+    })
+    .catch((err) => console.log(err));
+});
+router.get("/getgenartists", (req, res) => {
+  Genre.find()
+    .then((artists) => {
+      res.send(artists);
+    })
+    .catch((err) => console.log(err));
+});
+router.get("/getsongs", (req, res) => {
+  Song.find()
+    .then((songs) => {
+      res.send(songs);
+    })
+    .catch((err) => console.log(err));
+});
+router.post("/getartistsongs", (req, res) => {
+  Song.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/getpunartistsongs", (req, res) => {
+  Pun_song.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/getplaylistsongs", (req, res) => {
+  Song.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/gethinsongs", (req, res) => {
+  Hinsong.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/getgensongs", (req, res) => {
+  Song.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/like", (req, res) => {
+  Song.updateOne(
+    { _id: req.body.sid },
+    { $addToSet: { likedby: req.body.uid } }
+  )
+    .then((result) => {
+      console.log(
+        result,
+        " sfsf",
+        result,
+        "  If includes  ",
+        req.body.uid,
+        " If user includes "
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/likeuser", (req, res) => {
+  console.log(req.body.sid, req.body.uid);
+  User.updateOne(
+    { _id: req.body.uid },
+    { $addToSet: { likedby: [req.body.sid] } }
+  )
+    .then((result) => {
+      console.log("user also updated");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/removelike", (req, res) => {
+  Song.updateOne({ _id: req.body.sid }, { $pull: { likedby: req.body.uid } })
+    .then((result) => {
+      console.log(
+        result,
+        " sfsf",
+        result,
+        "  If includes  ",
+        req.body.uid,
+        " If user includes "
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/removelikeuser", (req, res) => {
+  User.updateOne({ _id: req.body.uid }, { $pull: { likedby: req.body.sid } })
+    .then((result) => {
+      console.log("user also updated");
+      res.send("DisLiked song ", req.body.sid, " by ", req.user._id);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+router.post("/likedmusic", (req, res) => {
+  Song.find({ _id: { $in: req.body.ids } })
+    .then((result) => {
+      console.log(result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+// router.post('/getsongsbylang', (req,res)=>{
+//     Song.find({'_id': {$in: req.body.ids}})
+//     .then(result => {res.send(result)})
+//     .catch(err => {console.log(err)})
+// })
+
+module.exports = router;
